@@ -8,7 +8,6 @@ Set Statistics TIME ON
 --Exec dbo.COP_ProcLogic_2
 --GO
 
-
 Drop Proc If Exists dbo.COP_ProcLogic_2
 GO
 /***************************************************************************************
@@ -20,6 +19,19 @@ AS
 Begin
 SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 
+	Declare @ServiceInfo Table(
+		UnivServiceId Int,
+		ServiceName VarChar(100)
+	)
+
+	Insert Into @ServiceInfo
+	Select
+		UnivServiceId,
+		ServiceName
+	From dbo.UnivService_Info
+	where UnivID = 4084
+
+
 	Select
 		UnivServiceId
 		, SelectionId
@@ -30,7 +42,9 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 		, SelectionCode
 		, SelectionName
 	From dbo.UnivService_SelectionInfo
-	Where UnivServiceID = 408401
+	--Where UnivServiceID IN (408401, ~~~~ 408499)
+	where UnivServiceID IN (Select UnivServiceId From @ServiceInfo)
+	
 	
 	Select
 		UnivServiceId
@@ -44,8 +58,8 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 		, SubMajorCode
 		, SubMajorName
 	From dbo.UnivService_MajorInfo
-	Where UnivServiceID = 408401
-
+	where UnivServiceID IN (Select UnivServiceId From @ServiceInfo)
+	
 
 	Select
 		SRSID,
@@ -53,8 +67,13 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 		MajorId,
 		RegistStatus
 	From dbo.Stu_CommonInfo
-	Where UnivServiceID = 408401
+	where UnivServiceID IN (Select UnivServiceId From @ServiceInfo)
 	And PassStatus = 1
+	
+	Select 
+		UnivServiceId,
+		ServiceName
+	From @ServiceInfo
 
 End
 GO
