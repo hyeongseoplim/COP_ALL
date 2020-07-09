@@ -9,7 +9,23 @@ From master..spt_values
 Where Type = 'P'
 
 
+CREATE TABLE dbo.UnivService_Info(
+	UnivServiceId int NOT NULL,
+	ServiceName VarChar(100) NOT NULL,
+	CONSTRAINT PK_UnivService_Info PRIMARY KEY CLUSTERED 
+	(
+		UnivServiceId ASC
+	)
+)
+GO
+INSERT INTO dbo.UnivService_Info
+Values(408401, '수시1차')
+	, (408402, '수시2차')
+	, (408403, '정시1차')
+	, (408404, '정시2차')
 
+select *
+From dbo.UnivService_Info
 
 --select NEWID()
 --select rand()

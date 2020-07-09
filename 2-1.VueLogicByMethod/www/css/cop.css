@@ -1,3 +1,7 @@
 ﻿*[v-show]{
   display:none;
 }
+.cnt{
+  text-align:right;
+  padding-right:5px;
+}

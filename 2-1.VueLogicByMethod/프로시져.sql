@@ -62,13 +62,16 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
 	
 
 	Select
-		SRSID,
-		SelectionId,
-		MajorId,
-		RegistStatus
-	From dbo.Stu_CommonInfo
-	where UnivServiceID IN (Select UnivServiceId From @ServiceInfo)
-	And PassStatus = 1
+		SC.UnivServiceId,
+		SC.SelectionId,
+		SC.MajorId,
+		SC.SRSID,
+		SP.PayDate,
+		SC.RegistStatus
+	From dbo.Stu_CommonInfo SC
+	Inner Join dbo.Stu_PayInfo SP On SC.SRSID = SP.SRSID
+	where SC.UnivServiceID IN (Select UnivServiceId From @ServiceInfo)
+	And SC.PassStatus = 1
 	
 	Select 
 		UnivServiceId,
