@@ -69,6 +69,7 @@
   <script src="/js/axios.min.js"></script>
   <script src="/js/vuejs-datepicker.min.js"></script>
   <script>
+  var JXType = {"A":1};
   var appVue = new Vue({
     el : "#Contents",
     data : {
@@ -145,6 +146,7 @@
     },
     methods : {
       customFormatter : function(date) {
+        console.log(JXType);
         return moment(date).format('YYYY-MM-DD');
       },
       GetRegist : function(SelectionId, MajorId){

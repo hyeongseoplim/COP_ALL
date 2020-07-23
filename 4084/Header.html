@@ -1,0 +1,23 @@
+﻿<script type="text/javascript" src="/Admin/_inc/js/jquery.min.js"></script>
+<script type="text/javascript" src="/Admin/_inc/js/Common.js"></script>
+<script type="text/javascript">
+    function PageMove(btn) {
+        var url = $(btn).attr("url");
+        location.replace(url);
+    }
+</script>
+<div id="TopBtn" style="text-align:left;margin-bottom:10px;">
+    <button type="button" class="btn" url="StatReportTotal.aspx" onclick="PageMove(this)">1. 회계별 입금현황</button>
+    <!--<button type="button" class="btn" url="StatReportV4.aspx" onclick="PageMove(this)">1-1. 회계별 입금현황(산업체위탁)</button>
+    <button type="button" class="btn" url="StatReportV3.aspx" onclick="PageMove(this)">1-2. 회계별 입금현황(전공심화)</button>
+    <button type="button" class="btn" url="StatReportV5.aspx" onclick="PageMove(this)">1-3. 회계별 입금현황(편입학)</button> -->
+    <button type="button" class="btn" url="RefundStat.aspx" onclick="PageMove(this)">2. 반환자 명단</button>
+    <button type="button" class="btn" url="RefundListAdd.aspx" onclick="PageMove(this)">2-1. 환불지급조서</button>
+    <button type="button" class="btn" url="RegistStatTable.aspx" onclick="PageMove(this)">3. 등록금 납부현황</button>
+
+    <!--<button type="button" class="btn" url="RegistStat.aspx?Type=4" onclick="PageMove(this)">4. 등록 총괄</button>    -->
+    <button type="button" class="btn" url="RegistMajorStat.aspx" onclick="PageMove(this)">4. 등록 총괄</button>
+    <button type="button" class="btn" url="RegistStatR.aspx" onclick="PageMove(this)">5. 등록 현황</button>
+    <button type="button" class="btn" url="RegistStatA.aspx" onclick="PageMove(this)">6. 등록금액 정보내역</button>
+    <button type="button" class="btn" url="RegistStat.aspx?Type=7" onclick="PageMove(this)">7. 등록자 명단</button>
+</div>

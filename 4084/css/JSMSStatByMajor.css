@@ -1,0 +1,45 @@
+﻿
+body{
+    margin:5px 20px 20px 20px;
+    font-size:12px;
+}
+td.Cnt, th.Cnt{
+    text-align:right !important;
+    padding-right:10px;
+}
+h4{
+    font-size:14px;
+}
+
+
+table#JSMS thead th{
+    text-align:center;
+    vertical-align:middle;
+}
+.print-logo{
+    display:none;
+}
+.StatByMajor{
+    margin-bottom:100px;
+}
+
+@media print{
+    @page{
+        size:landscape;
+    }
+    body{
+        font-size:10px;
+    }
+    #TopBtn{
+        display:none;
+    }
+    .print-logo{
+        display:block;
+        position:fixed;
+        bottom:10px;
+        left:10px;
+    }
+    .StatByMajor{
+        page-break-after:always;
+    }
+}
